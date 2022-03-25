@@ -1,7 +1,10 @@
+import { App } from '../app.js';
 /* const { user, password, database} = require('./databaseKeys.js'); */
 import { db } from './databaseKeys.js';
 /* var mongoose = require('mongoose'); */
 import { mongoose } from 'mongoose';
+
+var port = '3700';
 
 export const database = {
   connect: () => {
@@ -11,9 +14,14 @@ export const database = {
     
     mongoose.connect(uri, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      connectTimeoutMS: 2000
     })
-    .then(console.log('Database is connected'))
+    .then(() => {
+      console.log('Database is connected');
+      App.listen(port, console.log(`Sever running on: http:localhost:${port}/api`)
+      )
+    })
     .catch(err => console.log("error: " + err));
   }
 }
