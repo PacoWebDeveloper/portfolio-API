@@ -1,14 +1,14 @@
 'use strict'
-/* var express = require('express'); */
 import express from 'express';
-/* var projectsController = require('../controllers/projectsControllers'); */
 import { controller } from '../controllers/projectsControllers.js';
-const { test, getProjects } = controller;
+
+const { test, getProjects, getProjectByName, createProject } = controller;
 
 var router = express.Router();
 
 router.get('/test', test);
 router.get('/projects', getProjects);
+router.get('/projectbyname', getProjectByName);
+router.post('/createProject', createProject);
 
-/* module.exports = router; */
 export const _router = router;

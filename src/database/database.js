@@ -1,7 +1,5 @@
 import { App } from '../app.js';
-/* const { user, password, database} = require('./databaseKeys.js'); */
 import { db } from './databaseKeys.js';
-/* var mongoose = require('mongoose'); */
 import { mongoose } from 'mongoose';
 
 var port = '3700';
