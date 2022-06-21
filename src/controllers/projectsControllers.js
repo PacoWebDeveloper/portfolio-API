@@ -78,7 +78,6 @@ var projects_controller = {
             const filter = {_id: id};
 
             const { path, mimetype, originalname } = req.file;
-            const mimetypeSplit = mimetype.split('/');
 
             const update = {imageUrl: originalname.toLowerCase()};
             
