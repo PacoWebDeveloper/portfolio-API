@@ -17,7 +17,7 @@ export const database = {
     })
     .then(() => {
       console.log('Database is connected');
-      App.listen(port, console.log(`Sever running on: http:localhost:${port}/api`)
+      App.listen(process.env.PORT || port, console.log(`Sever running on: http://localhost:${(process.env.PORT || port)}/api`)
       )
     })
     .catch(err => console.log("error: " + err));
