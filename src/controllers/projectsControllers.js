@@ -7,7 +7,7 @@ import path from "path";
 
 var projects_controller = {
     test: (req, res) => {
-        return res.status(200).send({message: "Hi i am projects controller"});
+        return res.json([{message: "Hi i am projects controller"}]);
     },
     getProjects: async (req, res) => {
         const results = await projects_model.find({});
@@ -105,11 +105,9 @@ var projects_controller = {
 		let path_file = 'src/uploads/' + name;
         
         if (existsSync(path_file)) {
-            /* console.log('Picture exists'); */
             return res.sendFile(path.resolve(path_file));
         }
         else {
-            /* console.log('Picture not exists'); */
             return res.status(404).send({message: 'Image not found'});
         }
 	},
@@ -127,10 +125,8 @@ var projects_controller = {
         let path_file = 'src/uploads/' + name;
         
         if (existsSync(path_file)) {
-            /* console.log('Picture exists'); */
             fs.unlink(path_file, (err) => {
                 if (err) throw err;
-                /* console.log('Image was deleted'); */
                 res.status(200).send({message: 'Image was deleted'});
             })
         } else res.status(500).send({message: 'Images does not exist'});
